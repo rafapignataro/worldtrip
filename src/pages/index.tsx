@@ -1,7 +1,6 @@
 import {
   Box,
   Divider,
-  Flex,
   Heading,
   Image,
   SimpleGrid,
@@ -10,18 +9,18 @@ import {
 } from '@chakra-ui/react'
 import { Header } from '../components/Header'
 import { HomeItem } from '../components/HomeItem'
-import { Swiper, SwiperSlide } from 'swiper/react'
 import SwiperCore, { Navigation, Pagination } from 'swiper'
 import { Carousel } from '../components/Carousel'
 import { GetServerSideProps } from 'next'
+import db from '../../db'
 
 SwiperCore.use([Navigation, Pagination])
 
 type Continent = {
   id: number
   name: string
-  description: string
-  carrouselImage: string
+  subtitle: string
+  carouselImg: string
 }
 
 interface HomeProps {
@@ -73,7 +72,7 @@ export default function Home({ continents }: HomeProps) {
       </Box>
       <Box py={['10', '16']} px={['6', '6', '10']} maxWidth={1240} mx="auto">
         <SimpleGrid
-          minChildWidth="100px"
+          minChildWidth="150px"
           justify="space-between"
           spacing={['6', '8']}
           w="100%"
@@ -118,7 +117,7 @@ export default function Home({ continents }: HomeProps) {
           Então escolha seu continente
         </Heading>
       </Box>
-      <Box mb={['10']} px={['0', '0', '10']} maxWidth={1240} mx="auto">
+      <Box mb={['10']} px={['0', '0', '0', '10']} maxWidth={1240} mx="auto">
         <Carousel continents={continents} />
       </Box>
     </Box>
@@ -126,32 +125,7 @@ export default function Home({ continents }: HomeProps) {
 }
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const continents = [
-    {
-      id: 1,
-      name: 'Europa',
-      description: 'O continente mais antigo.',
-      carrouselImage: '/continents/europe.png',
-    },
-    {
-      id: 2,
-      name: 'Europa',
-      description: 'O continente mais antigo.',
-      carrouselImage: '/continents/europe.png',
-    },
-    {
-      id: 3,
-      name: 'Europa',
-      description: 'O continente mais antigo.',
-      carrouselImage: '/continents/europe.png',
-    },
-    {
-      id: 4,
-      name: 'Europa',
-      description: 'O continente mais antigo.',
-      carrouselImage: '/continents/europe.png',
-    },
-  ]
+  const { continents } = db
   return {
     props: {
       continents,

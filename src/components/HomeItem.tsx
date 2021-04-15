@@ -16,14 +16,19 @@ export const HomeItem: React.FC<HomeItemProps> = ({
   isReduced = false,
 }) => {
   return (
-    <Flex direction={isReduced ? 'row' : 'column'} align="center" mx="">
+    <Flex direction={isReduced ? 'row' : 'column'} align="center">
       {isReduced ? (
         <Icon as={RiCheckboxBlankCircleFill} color="primary.900" mr="2" />
       ) : (
         <Image src={imgUrl} w="100%" h={85} mb="6" />
       )}
 
-      <Text fontWeight="semibold" fontSize="2xl" color="gray.700">
+      <Text
+        fontWeight="semibold"
+        whiteSpace="nowrap"
+        fontSize="2xl"
+        color="gray.700"
+      >
         {text}
       </Text>
     </Flex>

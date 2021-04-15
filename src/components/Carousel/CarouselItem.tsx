@@ -5,14 +5,14 @@ interface CarouselItemProps {
   id: number
   image: string
   name: string
-  description: string
+  subtitle: string
 }
 
 export const CarouselItem: React.FC<CarouselItemProps> = ({
   id,
   image,
   name,
-  description,
+  subtitle,
 }) => {
   return (
     <Link href={`continent/${id}`} passHref>
@@ -36,7 +36,7 @@ export const CarouselItem: React.FC<CarouselItemProps> = ({
             {name}
           </Text>
           <Text fontWeight="500" fontSize={['14px', '24px']}>
-            {description}
+            {subtitle}
           </Text>
         </Flex>
       </Flex>

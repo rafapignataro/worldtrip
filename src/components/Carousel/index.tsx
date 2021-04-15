@@ -8,8 +8,8 @@ SwiperCore.use([Navigation, Pagination])
 interface Continent {
   id: number
   name: string
-  description: string
-  carrouselImage: string
+  subtitle: string
+  carouselImg: string
 }
 
 interface CarouselProps {
@@ -33,8 +33,8 @@ export const Carousel: React.FC<CarouselProps> = ({ continents }) => {
             <CarouselItem
               id={continent.id}
               name={continent.name}
-              image={continent.carrouselImage}
-              description={continent.description}
+              image={continent.carouselImg}
+              subtitle={continent.subtitle}
             />
           </SwiperSlide>
         ))}
